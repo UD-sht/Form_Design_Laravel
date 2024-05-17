@@ -1,0 +1,78 @@
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: orange;
+    padding: 16px 0px;
+    text-align: center;
+    position: static;
+    width: 100%;
+    margin-bottom:20px;
+}
+
+form {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+}
+
+label.required::after {
+    content: "*";
+    color: red;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form input[type="file"],
+#issuing_country {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+form textarea {
+    width: 95%;
+    height: 70px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: black;
+}
+
