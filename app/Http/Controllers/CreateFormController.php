@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class CreateFormController extends Controller
 {
-    
     public function index()
     {
         $countries = [
@@ -42,53 +41,61 @@ class CreateFormController extends Controller
             'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan',
             'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
         ];
-        
-
         return view('FormCreation',['countries' => $countries]);
     }
-
     public function store(CreateFormRequest $request)
-    {
-       
+    {       
+        $f = new CreateFormModel;
+        $f->name = $request['name'];
+        $f->father_name = $request['father_name'];
+        $f->mother_name = $request['mother_name'];
+        $f->parent_address = $request['parent_address'];
+        $f->age = $request['age'];
+        $f->passport_number = $request['passport_number'];
+        $f->issuing_country = $request['issuing_country'];
+        $f->issuing_office = $request['issuing_office'];
+        $f->issuing_place = $request['issuing_place'];
+        $f->passport_issue_date = $request['passport_issue_date'];
+        $f->valid_period = $request['valid_period'];
 
-        
+        $f->renounced_citizenship_number= $request['renounced_citizenship_number'];
+        $f->renounced_citizenship_district = $request['renounced_citizenship_district'];
+        $f->renounced_date = $request['renounced_date'];
+        $f->relative_name = $request['relative_name'];
+        $f->relative_address = $request['relative_address'];
+        $f->relationship = $request['relationship'];
+        $f->nepali_citizen_name = $request['nepali_citizen_name'];
+        $f->nepali_citizen_address = $request['nepali_citizen_address'];
+        $f->nepali_citizen_number = $request['nepali_citizen_number'];
+        $f->residing_country_name = $request['residing_country_name'];
+        $f->residing_start_date = $request['residing_start_date'];
+        $f->occupation_details = $request['occupation_details'];
+        $f->existing_occupation = $request['existing_occupation'];
+        $f->annual_income = $request['annual_income'];
+        $f->acquired_knowledge = $request['acquired_knowledge'];
+        $f->investment_sector = $request['investment_sector'];
+        $f->investment_value = $request['investment_value'];
 
+
+        if ($request->hasFile('attached_file')) {
+            $attachedFiles = [];
         
-        // $f = new CreateFormModel;
-        // $f->name = $request['name'];
-        // $f->father_name = $request['father_name'];
-        // $f->mother_name = $request['mother_name'];
-        // $f->parent_address = $request['parent_address'];
-        // $f->age = $request['age'];
-        // $f->passport_number = $request['passport_number'];
-        // $f->issuing_country = $request['issuing_country'];
-        // $f->issuing_office = $request['issuing_office'];
-        // $f->issuing_place = $request['issuing_place'];
-        // $f->passport_issue_date = $request['passport_issue_date'];
-        // $f->valid_period = $request['valid_period'];
-        // if ($request->hasFile('attached_file')) {
-        //     $attachedFiles = [];
+            foreach ($request->file('attached_file') as $file) {
+                $path = $file->getClientOriginalName();
+                $file->move(public_path().'/files/', $path);
+                $attachedFiles[] = $path;
+            }
         
-        //     foreach ($request->file('attached_file') as $file) {
-        //         $path = $file->getClientOriginalName();
-        //         $file->move(public_path().'/files/', $path);
-        //         $attachedFiles[] = $path;
-        //     }
-        //     // Save the array of file paths to the database
-        //     $f->attached_file = json_encode($attachedFiles); // Store file paths as JSON
-        //     $f->name = $request->input('name');        
-        // }
-        // $f->save();
+            $f->attached_file = json_encode($attachedFiles); 
+            $f->name = $request->input('name');        
+        }
+        $f->save();
 
         // dd($request->all());
 
-
-        // return back()->with('success', 'Form submitted successfully!');
         return back()->with('success', 'Form submitted successfully!');
 
         // session()->flash('success', 'Form submitted successfully!');
-
-        // Dump session data to debug
         // return back();        
         
     } 
