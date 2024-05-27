@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        
     }
 
     /**
@@ -19,6 +20,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Blade::directive('error', function ($field) {
+            return "<?php if(\$errors->has($field)): ?>
+                            <div class=\"text-danger\" style=\"color:red;\">{{ \$errors->first($field) }}</div>
+                    <?php endif; ?>";    
+        });
+
     }
 }

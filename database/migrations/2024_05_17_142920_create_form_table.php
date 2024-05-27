@@ -27,10 +27,10 @@ return new class extends Migration
             $table->string('renounced_citizenship_number')->nullable();
             $table->string('renounced_citizenship_district')->nullable();
             $table->string('renounced_date')->nullable();
-            $table->string('relative_name')->nullable();
+            $table->string('relative_name',60)->nullable();
             $table->text('relative_address')->nullable();
-            $table->string('relationship')->nullable();
-            $table->string('nepali_citizen_name')->nullable();
+            $table->string('relationship',60)->nullable();
+            $table->string('nepali_citizen_name',60)->nullable();
             $table->text('nepali_citizen_address')->nullable();
             $table->string('nepali_citizen_number')->nullable();
             $table->text('residing_country_name')->nullable();

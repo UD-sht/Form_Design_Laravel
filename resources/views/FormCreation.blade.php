@@ -11,8 +11,7 @@
 
 <body>
         @if(session('success'))
-            <div class="alert alert-success" role="alert"
-                style="z-index: 10000;text-align: center;border: 1px solid lightgreen;background-color: lightgreen;margin: 5px 500px; padding:15px 20px; border-radius:8px;position:absolute;">
+            <div class="alert alert-success" role="alert" id="success">
                 <strong>Success!</strong> {{ session('success') }}
             </div>
         @endif
@@ -27,47 +26,41 @@
                 <label for="name" class="required">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Name, Surname" value="{{ old('name') }}">
                 @error('name')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+
             </div>
+            
             <div>
                 <label for="father_name" class="required">Father's Name:</label>
                 <input type="text" id="father_name" name="father_name" placeholder="Name, Surname"
                     value="{{ old('father_name') }}">
                 @error('father_name')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                    
             </div>
             <div>
                 <label for="mother_name" class="required">Mother's Name:</label>
                 <input type="text" id="mother_name" name="mother_name" placeholder="Name, Surname"
                     value="{{ old('mother_name') }}">
                 @error('mother_name')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                   
             </div>
             <div>
                 <label for="parent_address" class="required">Parent's Address:</label>
                 <textarea id="parent_address" name="parent_address"
                     placeholder="Address">{{ old('parent_address') }}</textarea>
                 @error('parent_address')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                   
             </div>
             <div>
                 <label for="age" class="required">Age:</label>
                 <input type="number" id="age" name="age" min="1" placeholder="Age" value="{{ old('age') }}">
                 @error('age')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
-            </div>
+                    
             <div>
                 <label for="passport_number" class="required">Passport Number:</label>
                 <input type="text" id="passport_number" name="passport_number" placeholder="Passport Number (e.g: 12345678N)"
                     value="{{ old('passport_number') }}">
                 @error('passport_number')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                    
             </div>
 
             <h4 style="color:red;">Passport Issuing Details:</h4>
@@ -80,40 +73,34 @@
                     @endforeach
                 </select>
                 @error('issuing_country')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                    
             </div>
             <div>
                 <label for="issuing_office" class="required">Name of the Issuing Office:</label>
                 <input type="text" id="issuing_office" name="issuing_office" placeholder="Issuing Office"
                     value="{{ old('issuing_office') }}">
                 @error('issuing_office')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                    
             </div>
             <div>
                 <label for="issuing_place" class="required">Place:</label>
                 <input type="text" id="issuing_place" name="issuing_place" placeholder="Issuing Place"
                     value="{{ old('issuing_place') }}">
                 @error('issuing_place')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
-            </div>
+                  
             <div>
                 <label for="passport_issue_date" class="required">Date of Issue:</label>
                 <input type="date" id="passport_issue_date" name="passport_issue_date" placeholder="Issue Date"
                     value="{{ old('passport_issue_date') }}">
                 @error('passport_issue_date')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                    
             </div>
             <div>
                 <label for="valid_period" class="required">Valid period for the Passport:</label>
                 <input type="date" id="valid_period" name="valid_period" placeholder="Valid Period"
                     value="{{ old('valid_period') }}">
                 @error('valid_period')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                    
             </div>
 
             <h4 style="color:red;"> Renounced Citizenship (Optional)</h4>
@@ -121,8 +108,7 @@
                 <label for="renounced_citizenship_number">Renounced Citizenship Number:</label>
                 <input type="text" id="renounced_citizenship_number" name="renounced_citizenship_number" placeholder="Citizenship Number (e.g: 1234567890)" value="{{ old('renounced_citizenship_number') }}">
                 @error('renounced_citizenship_number')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                   
             </div>
 
             <div>
@@ -163,8 +149,7 @@
                 <label for="nepali_citizen_number">Citizenship Number:</label>
                 <input type="text" id="nepali_citizen_number" name="nepali_citizen_number" placeholder="Citizenship Number (e.g: 1234567890)" value="{{ old('nepali_citizen_number') }}">
                 @error('nepali_citizen_number')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                    
             </div>
 
             <h3 style="color:red;">2. Residing Countries (Optional)</h3>
@@ -213,8 +198,7 @@
                 <label for="attached_file" class="required">Attach Files:</label>
                 <input type="file" id="attached_file" name="attached_file[]" multiple>
                 @error('attached_file')
-                    <div class="text-danger" style="color:red;">{{ $message }}</div>
-                @enderror
+                
             </div>
 
             <div>

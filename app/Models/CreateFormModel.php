@@ -24,6 +24,7 @@ class CreateFormModel extends Model
         'passport_issue_date',
         'valid_period',
         'attached_file',
+        
         'renounced_citizenship_number',
         'renounced_citizenship_district',
         'renounced_date',
